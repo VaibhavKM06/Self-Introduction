@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaibhav K Madhyastha</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated gradient background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5, #ffbe0b, #fb5607);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Geometric shapes overlay */
+        .shapes-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(odd) {
+            border-radius: 20%;
+            animation-direction: reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+            }
+
+            33% {
+                transform: translateY(-30px) rotate(120deg) scale(1.1);
+            }
+
+            66% {
+                transform: translateY(15px) rotate(240deg) scale(0.9);
+            }
+        }
+
+        /* Matrix rain effect */
+        .matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 30px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #ff006e;
+            object-fit: cover;
+            box-shadow: 0 0 50px rgba(255, 0, 110, 0.6);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .profile-pic:hover {
+            box-shadow: 0 0 70px rgba(255, 0, 110, 0.8);
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 4em;
+            background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: textGradient 3s ease infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes textGradient {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            color: #ccc;
+            margin-top: 15px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Horizontal Navigation */
+        .nav-container {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 15px;
+            margin: 40px 0;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .nav-buttons::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-btn {
+            padding: 15px 25px;
+            background: linear-gradient(45deg, rgba(255, 0, 110, 0.2), rgba(131, 56, 236, 0.2));
+            border: 2px solid rgba(255, 0, 110, 0.3);
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            min-width: 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 0, 110, 0.4);
+            border-color: #ff006e;
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(45deg, #ff006e, #8338ec);
+            box-shadow: 0 15px 40px rgba(255, 0, 110, 0.6);
+            transform: translateY(-3px);
+            border-color: #3a86ff;
+        }
+
+        .content-section {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: none;
+            display: none;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 50px;
+            border-radius: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .content-section.active {
+            display: block;
+            animation: slideInFade 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes slideInFade {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px) scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        .section-title {
+            font-size: 3em;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff006e, #3a86ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff006e, #3a86ff);
+            border-radius: 2px;
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff);
+            border-radius: 2px;
+            transform: translateX(-100%);
+            animation: loadingAnimation 1s ease-in-out forwards;
+        }
+
+        @keyframes loadingAnimation {
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 0, 110, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #ff006e, #8338ec, #3a86ff);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 0, 110, 0.3);
+            border-color: #ff006e;
+        }
+
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .hobby-card {
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(131, 56, 236, 0.1));
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(255, 0, 110, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hobby-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 0, 110, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .hobby-card:hover::after {
+            opacity: 1;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(255, 0, 110, 0.4);
+            border-color: #ff006e;
+        }
+
+        .education-item {
+            margin-bottom: 25px;
+            padding: 25px;
+            background: linear-gradient(45deg, rgba(58, 134, 255, 0.1), rgba(131, 56, 236, 0.1));
+            border-radius: 15px;
+            border-left: 5px solid #3a86ff;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateX(15px);
+            box-shadow: 0 10px 30px rgba(58, 134, 255, 0.3);
+        }
+
+        .anime-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(45deg, rgba(255, 190, 11, 0.2), rgba(251, 86, 7, 0.2));
+            border-radius: 25px;
+            border: 2px solid rgba(255, 190, 11, 0.3);
+        }
+
+        .goat-text {
+            font-size: 2em;
+            background: linear-gradient(45deg, #ffbe0b, #fb5607);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .nav-buttons {
+                justify-content: flex-start;
+                padding: 0 10px;
+            }
+
+            .nav-btn {
+                min-width: 100px;
+                font-size: 13px;
+                padding: 12px 18px;
+            }
+
+            .content-section {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 2.2em;
+            }
+
+            .hobby-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff006e, #8338ec);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #8338ec, #3a86ff);
+        }
+
+        /* Profile picture spin animation keyframe */
+        @keyframes spin {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.1) rotate(180deg);
+            }
+
+            100% {
+                transform: scale(1) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="animated-bg"></div>
+    <div class="shapes-overlay" id="shapesOverlay"></div>
+    <canvas class="matrix" id="matrixCanvas"></canvas>
+    <div class="container">
+        <header>
+            <div class="profile-section">
+                <img src=new-pfp.jpg alt="Vaibhav K Madhyastha's Profile Picture" class="profile-pic" id="profilePic">
+                <div>
+                    <h1>Vaibhav K Madhyastha</h1>
+                    <p class="tagline">Tech Enthusiast | CS Student | Anime Lover | Explorer</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="nav-container">
+            <div class="nav-buttons">
+                <button class="nav-btn active" data-section="about">
+                    <span>🙋‍♂️ About Me</span>
+                </button>
+                <button class="nav-btn" data-section="hobbies">
+                    <span>🎯 Hobbies</span>
+                </button>
+                <button class="nav-btn" data-section="education">
+                    <span>🎓 Education</span>
+                </button>
+                <button class="nav-btn" data-section="city">
+                    <span>🏙️ My City</span>
+                </button>
+                <button class="nav-btn" data-section="anime">
+                    <span>⚔️ Anime</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="loading-bar" id="loadingBar" style="display: none;">
+            <div class="loading-progress"></div>
+        </div>
+
+        <div id="about" class="content-section active">
+            <h2 class="section-title">About Me</h2>
+            <div class="info-card">
+                <p style="font-size: 1.2em; line-height: 1.8;">
+                    Welcome to my digital realm! I'm Vaibhav K Madhyastha, a passionate Computer Science student and
+                    technology enthusiast currently pursuing my CS UG degree at PES College.
+                    I have an insatiable curiosity for technological developments and love exploring how innovation
+                    shapes our world.
+                    When I'm not coding or diving deep into algorithms, you'll find me conquering mountain trails,
+                    getting lost in captivating books, or binge-watching epic anime series.
+                    I believe in continuous learning and always strive to stay at the forefront of tech trends while
+                    maintaining a perfect balance with my adventurous hobbies and creative pursuits.
+                </p>
+            </div>
+        </div>
+
+        <div id="hobbies" class="content-section">
+            <h2 class="section-title">My Passions</h2>
+            <div class="hobby-grid">
+                <div class="hobby-card">
+                    <h3 style="color: #4CAF50; margin-bottom: 20px; font-size: 1.4em;">🏔️ Mountain Hiking</h3>
+                    <p>There's pure magic in conquering peaks and breathing crisp mountain air! Hiking isn't just
+                        exercise for me - it's meditation, adventure, and my ultimate escape from screens. Every trail
+                        tells a story, and I love being part of that narrative.</p>
+                </div>
+                <div class="hobby-card">
+                    <h3 style="color: #2196F3; margin-bottom: 20px; font-size: 1.4em;">📚 Voracious Reading</h3>
+                    <p>Books are my portals to infinite universes! From sci-fi epics to technical documentation,
+                        philosophy to fiction - I devour knowledge in all its forms. Reading shapes my perspective and
+                        fuels my imagination daily.</p>
+                </div>
+                <div class="hobby-card">
+                    <h3 style="color: #FF9800; margin-bottom: 20px; font-size: 1.4em;">💻 Tech Innovation</h3>
+                    <p>I live and breathe technological evolution! From AI breakthroughs to quantum computing, web3 to
+                        machine learning - I'm always exploring the cutting edge. Technology isn't just my field; it's
+                        my passion and future.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="education" class="content-section">
+            <h2 class="section-title">Academic Journey</h2>
+            <div class="education-item">
+                <h3 style="color: #ff006e; margin-bottom: 15px; font-size: 1.3em;">🎓 University - Present</h3>
+                <p><strong>PES College</strong> - Currently pursuing my Computer Science (CS) UG degree, diving deep
+                    into algorithms, data structures, software engineering, and cutting-edge technologies that will
+                    shape tomorrow.</p>
+            </div>
+            <div class="education-item">
+                <h3 style="color: #8338ec; margin-bottom: 15px; font-size: 1.3em;">📖 Pre-University (11th & 12th)</h3>
+                <p><strong>Sharada PU College</strong> - Completed my higher secondary education with distinction,
+                    building a strong foundation in sciences and mathematics that paved my way to computer science.</p>
+            </div>
+            <div class="education-item">
+                <h3 style="color: #3a86ff; margin-bottom: 15px; font-size: 1.3em;">🏫 High School</h3>
+                <p><strong>Presidency School NLO</strong> - The foundation years where my love for learning was
+                    nurtured, and my curiosity about technology first sparked into a burning passion.</p>
+            </div>
+        </div>
+
+        <div id="city" class="content-section">
+            <h2 class="section-title">Bangalore - The Silicon Valley</h2>
+            <div class="info-card">
+                <p style="font-size: 1.2em; line-height: 1.8;">
+                    Bangalore isn't just my home - it's my inspiration! Known globally as the "Silicon Valley of India,"
+                    this incredible city perfectly embodies the fusion of rich tradition and cutting-edge innovation
+                    that defines modern India.
+                    The year-round pleasant weather makes it perfect for weekend hikes, while the bustling tech
+                    ecosystem keeps my entrepreneurial spirit alive.
+                    From the tranquil gardens of Lalbagh to the buzzing innovation hubs of Whitefield and Electronic
+                    City, every corner of this city tells a story of dreams, code, and endless possibilities.
+                    The vibrant startup culture, world-class tech companies, and the incredible community of developers
+                    and innovators make Bangalore the perfect launchpad for my tech aspirations. Plus, the amazing South
+                    Indian cuisine and filter coffee keep me fueled for those long coding sessions!
+                </p>
+            </div>
+        </div>
+
+        <div id="anime" class="content-section">
+            <h2 class="section-title">Anime Universe</h2>
+            <div class="anime-section">
+                <p style="font-size: 1.3em; margin-bottom: 25px; line-height: 1.7;">
+                    Anime isn't just entertainment for me - it's a window into incredible storytelling, art, and
+                    philosophy! I explore everything from mind-bending psychological thrillers to epic shounen
+                    adventures, heartwarming slice-of-life to intense seinen masterpieces.
+                    Each series brings unique perspectives, stunning visuals, and life lessons that resonate deeply with
+                    my own journey.
+                </p>
+                <div
+                    style="margin: 40px 0; padding: 30px; background: rgba(0, 0, 0, 0.4); border-radius: 20px; border: 2px solid rgba(255, 190, 11, 0.4);">
+                    <h3 style="color: #ffbe0b; margin-bottom: 20px; font-size: 1.4em;">🏴‍☠️ But there's one that rules
+                        them all...</h3>
+                    <p class="goat-text">ONE PIECE IS THE ABSOLUTE GOAT! 🔥👑</p>
+                    <p style="margin-top: 20px; font-size: 1.2em; line-height: 1.6;">
+                        The Grand Line adventure, unbreakable bonds of nakama, impossible dreams becoming reality, and
+                        Eiichiro Oda's masterful world-building!
+                        Luffy's unwavering determination to become the Pirate King teaches me that no dream is too big,
+                        no adventure too dangerous.
+                        <strong>Kaizoku-ou ni ore wa naru! 🏴‍☠️</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Enhanced Dynamic Content Loading System
+        class ContentManager {
+            constructor() {
+                this.currentSection = 'about';
+                this.loadingBar = document.getElementById('loadingBar');
+                this.sections = ['about', 'hobbies', 'education', 'city', 'anime'];
+                this.init();
+            }
+
+            init() {
+                this.setupNavigation();
+                this.createAnimatedBackground();
+                this.setupMatrixRain();
+                this.setupProfileInteraction();
+                this.preloadContent();
+            }
+
+            setupNavigation() {
+                const navButtons = document.querySelectorAll('.nav-btn');
+                navButtons.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const section = e.currentTarget.getAttribute('data-section');
+                        this.loadSection(section);
+                    });
+                });
+            }
+
+            async loadSection(sectionName) {
+                if (sectionName === this.currentSection) return;
+                // Show loading animation
+                this.showLoading();
+                // Simulate dynamic loading delay
+                await this.simulateLoading();
+                // Update active states
+                this.updateNavigation(sectionName);
+                this.showSection(sectionName);
+
+                this.currentSection = sectionName;
+                this.hideLoading();
+                // Smooth scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            showLoading() {
+                this.loadingBar.style.display = 'block';
+                const progress = this.loadingBar.querySelector('.loading-progress');
+                progress.style.animation = 'none';
+                progress.offsetHeight; // Trigger reflow
+                progress.style.animation = 'loadingAnimation 0.8s ease-in-out forwards';
+            }
+
+            hideLoading() {
+                setTimeout(() => {
+                    this.loadingBar.style.display = 'none';
+                }, 300);
+            }
+
+            simulateLoading() {
+                return new Promise(resolve => {
+                    setTimeout(resolve, 600 + Math.random() * 400); // Random delay for realism
+                });
+            }
+
+            updateNavigation(activeSection) {
+                const navButtons = document.querySelectorAll('.nav-btn');
+                navButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-section') === activeSection) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+
+            showSection(sectionName) {
+                // Hide all sections
+                const sections = document.querySelectorAll('.content-section');
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                // Show target section with animation
+                const targetSection = document.getElementById(sectionName);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            }
+
+            preloadContent() {
+                // Simulate preloading all sections for better performance
+                console.log('🚀 Preloading all content sections...');
+                this.sections.forEach((section, index) => {
+                    setTimeout(() => {
+                        console.log(`✅ Section '${section}' loaded`);
+                    }, index * 100);
+                });
+            }
+
+            createAnimatedBackground() {
+                const shapesOverlay = document.getElementById('shapesOverlay');
+
+                // Create floating geometric shapes
+                for (let i = 0; i < 15; i++) {
+                    const shape = document.createElement('div');
+                    shape.className = 'shape';
+
+                    const size = Math.random() * 100 + 50;
+                    shape.style.width = size + 'px';
+                    shape.style.height = size + 'px';
+                    shape.style.left = Math.random() * 100 + '%';
+                    shape.style.top = Math.random() * 100 + '%';
+                    shape.style.animationDelay = Math.random() * 6 + 's';
+                    shape.style.animationDuration = (Math.random() * 4 + 4) + 's';
+
+                    shapesOverlay.appendChild(shape);
+                }
+            }
+
+            setupMatrixRain() {
+                const canvas = document.getElementById('matrixCanvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+                const matrixArray = matrix.split("");
+                const font_size = 10;
+                const columns = canvas.width / font_size;
+                const drops = [];
+                for (let x = 0; x < columns; x++) {
+                    drops[x] = 1;
+                }
+                function draw() {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = '#00ff00';
+                    ctx.font = font_size + 'px arial';
+                    for (let i = 0; i < drops.length; i++) {
+                        const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                        ctx.fillText(text, i * font_size, drops[i] * font_size);
+                        if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
+                            drops[i] = 0;
+                        }
+                        drops[i]++;
+                    }
+                }
+                setInterval(draw, 35);
+                window.addEventListener('resize', () => {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                });
+            }
+
+            setupProfileInteraction() {
+                const profilePic = document.getElementById('profilePic');
+                profilePic.addEventListener('click', () => {
+                    profilePic.style.animation = 'none';
+                    profilePic.offsetHeight; // Trigger reflow
+                    profilePic.style.animation = 'spin 1s ease-in-out';
+                });
+            }
+        }
+
+        // Initialize the content management system
+        document.addEventListener('DOMContentLoaded', () => {
+            new ContentManager();
+        });
+
+        // Add some extra interactive effects
+        document.querySelectorAll('.info-card, .hobby-card, .education-item').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+
+</html>
