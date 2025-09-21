@@ -15,7 +15,7 @@ class VaibhavPortfolio {
             profile: {
                 name: "Vaibhav K Madhyastha",
                 tagline: "Tech Enthusiast | CS Student | Anime Lover | Explorer",
-                image: new- pfp.jpg
+                image: "new-pfp.jpg"
             },
             sections: {
                 about: {
