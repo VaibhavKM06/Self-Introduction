@@ -1,2 +1,2 @@
 # Self-Introduction
-Get to know about me
+Get to know more about me
