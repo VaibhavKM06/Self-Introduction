@@ -15,7 +15,7 @@ class VaibhavPortfolio {
             profile: {
                 name: "Vaibhav K Madhyastha",
                 tagline: "Tech Enthusiast | CS Student | Anime Lover | Explorer",
-                image:new-pfp.jpg 
+                image: new- pfp.jpg
             },
             sections: {
                 about: {
@@ -31,13 +31,13 @@ class VaibhavPortfolio {
                             description: "There's pure magic in conquering peaks and breathing crisp mountain air! Hiking isn't just exercise for me - it's meditation, adventure, and my ultimate escape from screens. Every trail tells a story, and I love being part of that narrative."
                         },
                         {
-                            title: "Voracious Reading", 
+                            title: "Voracious Reading",
                             icon: "📚",
                             description: "Books are my portals to infinite universes! From sci-fi epics to technical documentation, philosophy to fiction - I devour knowledge in all its forms. Reading shapes my perspective and fuels my imagination daily."
                         },
                         {
                             title: "Tech Innovation",
-                            icon: "💻", 
+                            icon: "💻",
                             description: "I live and breathe technological evolution! From AI breakthroughs to quantum computing, web3 to machine learning - I'm always exploring the cutting edge. Technology isn't just my field; it's my passion and future."
                         }
                     ]
@@ -54,7 +54,7 @@ class VaibhavPortfolio {
                         {
                             title: "Pre-University (11th & 12th)",
                             icon: "📖",
-                            institution: "Sharada PU College", 
+                            institution: "Sharada PU College",
                             description: "Completed my higher secondary education with distinction, building a strong foundation in sciences and mathematics that paved my way to computer science."
                         },
                         {
@@ -106,7 +106,7 @@ class VaibhavPortfolio {
             overflow-x: hidden;
             position: relative;
         `;
-        
+
         document.documentElement.style.cssText = `
             box-sizing: border-box;
         `;
@@ -192,7 +192,7 @@ class VaibhavPortfolio {
             overflow: hidden;
         `;
         document.body.appendChild(shapesOverlay);
-        
+
         for (let i = 0; i < 15; i++) {
             const shape = document.createElement('div');
             const size = Math.random() * 100 + 50;
@@ -235,7 +235,7 @@ class VaibhavPortfolio {
             border: 2px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         `;
-        
+
         const profileSection = document.createElement('div');
         profileSection.style.cssText = `
             display: flex;
@@ -262,7 +262,7 @@ class VaibhavPortfolio {
         `;
 
         const nameSection = document.createElement('div');
-        
+
         const name = document.createElement('h1');
         name.textContent = this.data.profile.name;
         name.style.cssText = `
@@ -291,7 +291,7 @@ class VaibhavPortfolio {
         profileSection.appendChild(nameSection);
         header.appendChild(profileSection);
         container.appendChild(header);
-        
+
         this.elements.profilePic = profilePic;
     }
 
@@ -376,7 +376,7 @@ class VaibhavPortfolio {
         navContainer.appendChild(navButtons);
         this.elements.container.appendChild(navContainer);
         this.elements.container.appendChild(loadingBar);
-        
+
         this.elements.navButtons = navButtons;
         this.elements.loadingBar = loadingBar;
     }
@@ -385,7 +385,7 @@ class VaibhavPortfolio {
         const contentContainer = document.createElement('div');
         contentContainer.id = 'content-container';
         this.elements.container.appendChild(contentContainer);
-        
+
         this.createAboutSection(contentContainer);
         this.createHobbiesSection(contentContainer);
         this.createEducationSection(contentContainer);
@@ -395,7 +395,7 @@ class VaibhavPortfolio {
 
     createAboutSection(parent) {
         const section = this.createSectionElement('about', this.data.sections.about.title, true);
-        
+
         const infoCard = document.createElement('div');
         infoCard.style.cssText = `
             background: rgba(255, 255, 255, 0.05);
@@ -405,14 +405,14 @@ class VaibhavPortfolio {
             border: 1px solid rgba(255, 0, 110, 0.2);
             transition: all 0.4s ease;
         `;
-        
+
         const content = document.createElement('p');
         content.textContent = this.data.sections.about.content;
         content.style.cssText = `
             font-size: 1.2em;
             line-height: 1.8;
         `;
-        
+
         infoCard.appendChild(content);
         section.appendChild(infoCard);
         parent.appendChild(section);
@@ -420,7 +420,7 @@ class VaibhavPortfolio {
 
     createHobbiesSection(parent) {
         const section = this.createSectionElement('hobbies', this.data.sections.hobbies.title);
-        
+
         const grid = document.createElement('div');
         grid.style.cssText = `
             display: grid;
@@ -428,7 +428,7 @@ class VaibhavPortfolio {
             gap: 25px;
             margin: 30px 0;
         `;
-        
+
         this.data.sections.hobbies.items.forEach(hobby => {
             const card = document.createElement('div');
             card.style.cssText = `
@@ -439,7 +439,7 @@ class VaibhavPortfolio {
                 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 border: 2px solid rgba(255, 0, 110, 0.2);
             `;
-            
+
             const title = document.createElement('h3');
             title.textContent = `${hobby.icon} ${hobby.title}`;
             title.style.cssText = `
@@ -447,22 +447,22 @@ class VaibhavPortfolio {
                 margin-bottom: 20px;
                 font-size: 1.4em;
             `;
-            
+
             const desc = document.createElement('p');
             desc.textContent = hobby.description;
-            
+
             card.appendChild(title);
             card.appendChild(desc);
             grid.appendChild(card);
         });
-        
+
         section.appendChild(grid);
         parent.appendChild(section);
     }
 
     createEducationSection(parent) {
         const section = this.createSectionElement('education', this.data.sections.education.title);
-        
+
         this.data.sections.education.items.forEach(item => {
             const eduItem = document.createElement('div');
             eduItem.style.cssText = `
@@ -473,7 +473,7 @@ class VaibhavPortfolio {
                 border-left: 5px solid #3a86ff;
                 transition: all 0.3s ease;
             `;
-            
+
             const title = document.createElement('h3');
             title.textContent = `${item.icon} ${item.title}`;
             title.style.cssText = `
@@ -481,21 +481,21 @@ class VaibhavPortfolio {
                 margin-bottom: 15px;
                 font-size: 1.3em;
             `;
-            
+
             const desc = document.createElement('p');
             desc.innerHTML = `<strong>${item.institution}</strong> - ${item.description}`;
-            
+
             eduItem.appendChild(title);
             eduItem.appendChild(desc);
             section.appendChild(eduItem);
         });
-        
+
         parent.appendChild(section);
     }
 
     createCitySection(parent) {
         const section = this.createSectionElement('city', this.data.sections.city.title);
-        
+
         const infoCard = document.createElement('div');
         infoCard.style.cssText = `
             background: rgba(255, 255, 255, 0.05);
@@ -505,14 +505,14 @@ class VaibhavPortfolio {
             border: 1px solid rgba(255, 0, 110, 0.2);
             transition: all 0.4s ease;
         `;
-        
+
         const content = document.createElement('p');
         content.textContent = this.data.sections.city.content;
         content.style.cssText = `
             font-size: 1.2em;
             line-height: 1.8;
         `;
-        
+
         infoCard.appendChild(content);
         section.appendChild(infoCard);
         parent.appendChild(section);
@@ -520,7 +520,7 @@ class VaibhavPortfolio {
 
     createAnimeSection(parent) {
         const section = this.createSectionElement('anime', this.data.sections.anime.title);
-        
+
         const animeContainer = document.createElement('div');
         animeContainer.style.cssText = `
             text-align: center;
@@ -529,7 +529,7 @@ class VaibhavPortfolio {
             border-radius: 25px;
             border: 2px solid rgba(255, 190, 11, 0.3);
         `;
-        
+
         const mainContent = document.createElement('p');
         mainContent.textContent = this.data.sections.anime.content;
         mainContent.style.cssText = `
@@ -537,7 +537,7 @@ class VaibhavPortfolio {
             margin-bottom: 25px;
             line-height: 1.7;
         `;
-        
+
         const specialBox = document.createElement('div');
         specialBox.style.cssText = `
             margin: 40px 0;
@@ -546,7 +546,7 @@ class VaibhavPortfolio {
             border-radius: 20px;
             border: 2px solid rgba(255, 190, 11, 0.4);
         `;
-        
+
         const specialTitle = document.createElement('h3');
         specialTitle.textContent = `${this.data.sections.anime.special.icon} ${this.data.sections.anime.special.title}`;
         specialTitle.style.cssText = `
@@ -554,7 +554,7 @@ class VaibhavPortfolio {
             margin-bottom: 20px;
             font-size: 1.4em;
         `;
-        
+
         const goatText = document.createElement('p');
         goatText.textContent = `${this.data.sections.anime.special.highlight} ${this.data.sections.anime.special.fire}`;
         goatText.style.cssText = `
@@ -566,7 +566,7 @@ class VaibhavPortfolio {
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             animation: pulse 2s ease-in-out infinite;
         `;
-        
+
         const specialDesc = document.createElement('p');
         specialDesc.textContent = `${this.data.sections.anime.special.description} 🏴‍☠️`;
         specialDesc.style.cssText = `
@@ -574,11 +574,11 @@ class VaibhavPortfolio {
             font-size: 1.2em;
             line-height: 1.6;
         `;
-        
+
         specialBox.appendChild(specialTitle);
         specialBox.appendChild(goatText);
         specialBox.appendChild(specialDesc);
-        
+
         animeContainer.appendChild(mainContent);
         animeContainer.appendChild(specialBox);
         section.appendChild(animeContainer);
@@ -602,7 +602,7 @@ class VaibhavPortfolio {
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         `;
-        
+
         const sectionTitle = document.createElement('h2');
         sectionTitle.textContent = title;
         sectionTitle.style.cssText = `
@@ -614,7 +614,7 @@ class VaibhavPortfolio {
             text-align: center;
             position: relative;
         `;
-        
+
         section.appendChild(sectionTitle);
         return section;
     }
@@ -632,7 +632,7 @@ class VaibhavPortfolio {
             opacity: 0.3;
         `;
         document.body.appendChild(canvas);
-        
+
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -685,7 +685,7 @@ class VaibhavPortfolio {
         this.elements.profilePic.addEventListener('click', () => {
             this.elements.profilePic.style.transform = 'scale(1.1) rotate(360deg)';
             this.elements.profilePic.style.transition = 'transform 0.5s ease';
-            
+
             setTimeout(() => {
                 this.elements.profilePic.style.transform = 'scale(1) rotate(0deg)';
             }, 500);
@@ -695,7 +695,7 @@ class VaibhavPortfolio {
             card.addEventListener('mouseenter', () => {
                 card.style.transform = 'translateY(-10px) scale(1.02)';
             });
-            
+
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(0) scale(1)';
             });
@@ -745,8 +745,8 @@ class VaibhavPortfolio {
         navButtons.forEach(btn => {
             const isActive = btn.getAttribute('data-section') === activeSection;
             btn.className = 'nav-btn' + (isActive ? ' active' : '');
-            btn.style.background = isActive ? 
-                'linear-gradient(45deg, #ff006e, #8338ec)' : 
+            btn.style.background = isActive ?
+                'linear-gradient(45deg, #ff006e, #8338ec)' :
                 'linear-gradient(45deg, rgba(255, 0, 110, 0.2), rgba(131, 56, 236, 0.2))';
             btn.style.borderColor = isActive ? '#3a86ff' : 'rgba(255, 0, 110, 0.3)';
             btn.style.boxShadow = isActive ? '0 15px 40px rgba(255, 0, 110, 0.6)' : 'none';
@@ -762,7 +762,7 @@ class VaibhavPortfolio {
             section.style.display = isActive ? 'block' : 'none';
             section.style.opacity = isActive ? '1' : '0';
             section.style.transform = isActive ? 'translateX(0) scale(1)' : 'translateX(-50px)';
-            
+
             if (isActive) {
                 section.style.animation = 'slideInFade 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards';
             }
