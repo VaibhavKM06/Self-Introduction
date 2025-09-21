@@ -13,7 +13,7 @@ class VaibhavPortfolio {
     initializeData() {
         return {
             profile: {
-                name: "Vaibhav K Madhyastha",
+                name: "Pranav K Madhyastha",
                 tagline: "Tech Enthusiast | CS Student | Anime Lover | Explorer",
                 image: "new-pfp.jpg"
             },
