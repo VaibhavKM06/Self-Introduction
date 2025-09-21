@@ -15,7 +15,7 @@ class VaibhavPortfolio {
             profile: {
                 name: "Vaibhav K Madhyastha",
                 tagline: "Tech Enthusiast | CS Student | Anime Lover | Explorer",
-                image: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUSExMWFhUWGB8XGRgXGRgYHxcYGhgXGR8YHRsdHSggHx0lHRgXITEhJSkrLi4uGCA1ODMtNygtLisBCgoKDg0OGxAQGy0mICY1LS4tNS0tLSsvMi0tLS0tLS0rLS0tLS0vLS0tLy0vLS0tNzItLy0vLS0tLS0tLS0vLf/AABEIAKgBLAMBIgACEQEDEQH/xAAcAAACIgnBAQAAAAAAAAAAAAAFBgMEAAIHAQj/xABFEAACAQIEAwUECAQFAwMFAQABAgMEEQASITEFQVEGEyJhcTJSgZEHFCNCYqGxwTNy0fAVgpKi4SRTwhZDYyU0RHPDCP/EABsBAAIDAQEBAAAAAAAAAAAAAAMEAQIFAAYH/8QAMhEAAgEDAwIDBwMFAQEAAAAAAQIAAxEhBBIxQfATUWEFInGBkbHRocHxFCMyQuGCM//aAAwDAQACEQMRAD8A6TRurlhItn5sBY/5l2v56Ypce4azzwG2aGNGa42EhyKCehyl/nir2T4vUSu8Eyd5JBZXbRSVbVXB6NY6a6qw5YZaqjOeKRD4lBe52yrAGxF9dNNbYliIsYN7Tc7nHRTMTtF"
+                image:new-pfp.jpg 
             },
             sections: {
                 about: {
